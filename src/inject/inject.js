@@ -96,7 +96,6 @@ const RedditUserAvatars = () => {
     }
     populateUserPool()
     render()
-    console.log(usernamesToColors)
   }
 
   return {
