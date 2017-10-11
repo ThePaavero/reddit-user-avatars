@@ -13,20 +13,64 @@ const RedditUserAvatars = () => {
   }
 
   const getRandomColorHex = () => {
-    const chars = '0123456789abcdef'
-    let length = 6
-    let hex = '#'
-    while (length--) {
-      hex += chars[(Math.random() * 16) | 0]
-    }
-    return hex
+    const colorPool = [
+      'DarkOliveGreen',
+      'Olive',
+      'OliveDrab',
+      'YellowGreen',
+      'LimeGreen',
+      'Lime',
+      'LawnGreen',
+      'Chartreuse',
+      'GreenYellow',
+      'SpringGreen',
+      'MediumSpringGreen',
+      'LightGreen',
+      'PaleGreen',
+      'DarkSeaGreen',
+      'MediumAquamarine',
+      'MediumSeaGreen',
+      'SeaGreen',
+      'ForestGreen',
+      'Green',
+      'DarkGreen',
+      'Aqua',
+      'Cyan',
+      'LightCyan',
+      'PaleTurquoise',
+      'Aquamarine',
+      'Turquoise',
+      'MediumTurquoise',
+      'DarkTurquoise',
+      'LightSeaGreen',
+      'CadetBlue',
+      'DarkCyan',
+      'Teal',
+      'LightSteelBlue',
+      'PowderBlue',
+      'LightBlue',
+      'SkyBlue',
+      'LightSkyBlue',
+      'DeepSkyBlue',
+      'DodgerBlue',
+      'CornflowerBlue',
+      'SteelBlue',
+      'RoyalBlue',
+      'Blue',
+      'MediumBlue',
+      'DarkBlue',
+      'Navy',
+      'MidnightBlue'
+    ]
+
+    return colorPool[Math.round(Math.random() * colorPool.length - 1)]
   }
 
   const render = () => {
     for (let i in usernamesToColors) {
       const username = i
-      const hex = usernamesToColors[i]
-      const avatar = getAvatarElement(hex)
+      const color = usernamesToColors[i]
+      const avatar = getAvatarElement(color)
       elementPool.forEach(el => {
         if (el.innerText.trim() === username) {
           el.style.position = 'relative'
@@ -36,9 +80,9 @@ const RedditUserAvatars = () => {
     }
   }
 
-  const getAvatarElement = (hex) => {
+  const getAvatarElement = (color) => {
     const avatar = document.createElement('i')
-    avatar.style.backgroundColor = hex
+    avatar.style.backgroundColor = color
     avatar.style.display = 'block'
     avatar.style.position = 'relative'
     avatar.style.width = '100%'
