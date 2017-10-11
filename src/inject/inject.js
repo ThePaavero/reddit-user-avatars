@@ -4,7 +4,7 @@ const RedditUserAvatars = () => {
   const elementPool = []
 
   const populateUserPool = () => {
-    const usernameElements = document.querySelectorAll('a.author')
+    const usernameElements = document.querySelectorAll('.commentarea a.author')
     Array.from(usernameElements).forEach(el => {
       const username = el.innerText.trim()
       usernamesToColors[username] = getRandomColorHex()
@@ -26,23 +26,30 @@ const RedditUserAvatars = () => {
     for (let i in usernamesToColors) {
       const username = i
       const hex = usernamesToColors[i]
-      const avatar = document.createElement('i')
-      avatar.style.backgroundColor = hex
-      avatar.style.display = 'inline-block'
-      avatar.style.width = '10px'
-      avatar.style.height = '10px'
-
-      console.log(username)
-
+      const avatar = getAvatarElement(hex)
       elementPool.forEach(el => {
         if (el.innerText.trim() === username) {
-          el.appendChild(avatar.cloneNode(true))
+          el.style.position = 'relative'
+          el.parentNode.insertBefore(avatar.cloneNode(true), el)
         }
       })
     }
   }
 
+  const getAvatarElement = (hex) => {
+    const avatar = document.createElement('i')
+    avatar.style.backgroundColor = hex
+    avatar.style.display = 'block'
+    avatar.style.position = 'relative'
+    avatar.style.width = '100%'
+    avatar.style.height = '5px'
+    return avatar
+  }
+
   const init = () => {
+    if (window.location.href.indexOf('/comments/') < 0) {
+      return
+    }
     populateUserPool()
     render()
     console.log(usernamesToColors)

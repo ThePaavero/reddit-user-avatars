@@ -1,2 +1,2 @@
-# Reddit User Stalk (Chrome extension)
-Adds a small button next to a user link. Click the link to see what subreddits the user is active in.
+# Reddit User Avatars (Chrome extension)
+Add visual cues to reddit usernames in the comments section
