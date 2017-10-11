@@ -70,7 +70,7 @@ const RedditUserAvatars = () => {
     for (let i in usernamesToColors) {
       const username = i
       const color = usernamesToColors[i]
-      const avatar = getAvatarElement(color)
+      const avatar = getAvatarElement(username, color)
       elementPool.forEach(el => {
         if (el.innerText.trim() === username) {
           el.style.position = 'relative'
@@ -80,13 +80,18 @@ const RedditUserAvatars = () => {
     }
   }
 
-  const getAvatarElement = (color) => {
+  const getAvatarElement = (username, color) => {
     const avatar = document.createElement('i')
+    avatar.innerText = username[0].toUpperCase()
     avatar.style.backgroundColor = color
-    avatar.style.display = 'block'
+    avatar.style.display = 'inline-block'
     avatar.style.position = 'relative'
-    avatar.style.width = '100%'
-    avatar.style.height = '5px'
+    avatar.style.padding = '3px'
+    avatar.style.margin = '0 10px'
+    avatar.style.color = 'white'
+    avatar.style.fontSize = '30px'
+    avatar.style.lineHeight = '30px'
+    avatar.style.fontStyle = 'normal'
     return avatar
   }
 
