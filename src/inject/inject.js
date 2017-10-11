@@ -7,13 +7,23 @@ const RedditUserAvatars = () => {
     const usernameElements = document.querySelectorAll('.commentarea a.author')
     Array.from(usernameElements).forEach(el => {
       const username = el.innerText.trim()
-      usernamesToColors[username] = getRandomColorHex()
+      usernamesToColors[username] = getRandomColorHex(username)
       elementPool.push(el)
     })
   }
 
-  const getRandomColorHex = () => {
-    return '#' + (Math.random() * 0xFFFFFF << 0).toString(16)
+  const getRandomColorHex = (str) => {
+    // https://stackoverflow.com/a/16348977
+    let hash = 0
+    for (let i = 0; i < str.length; i++) {
+      hash = str.charCodeAt(i) + ((hash << 5) - hash)
+    }
+    let colour = '#'
+    for (let i = 0; i < 3; i++) {
+      const value = (hash >> (i * 8)) & 0xFF
+      colour += ('00' + value.toString(16)).substr(-2)
+    }
+    return colour
   }
 
   const render = () => {
