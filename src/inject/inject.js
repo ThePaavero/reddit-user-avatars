@@ -92,6 +92,7 @@ const RedditUserAvatars = () => {
     avatar.style.fontSize = '30px'
     avatar.style.lineHeight = '30px'
     avatar.style.fontStyle = 'normal'
+    avatar.style.textShadow = '1px 1px 0 rgba(0, 0, 0, 0.3)'
     return avatar
   }
 
