@@ -82,7 +82,7 @@ const RedditUserAvatars = () => {
 
   const getAvatarElement = (username, color) => {
     const avatar = document.createElement('i')
-    avatar.innerText = username[0].toUpperCase()
+    avatar.innerText = username.substring(0, 2)
     avatar.style.backgroundColor = color
     avatar.style.display = 'inline-block'
     avatar.style.position = 'relative'
