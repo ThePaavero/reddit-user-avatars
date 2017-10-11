@@ -13,57 +13,7 @@ const RedditUserAvatars = () => {
   }
 
   const getRandomColorHex = () => {
-    const colorPool = [
-      'DarkOliveGreen',
-      'Olive',
-      'OliveDrab',
-      'YellowGreen',
-      'LimeGreen',
-      'Lime',
-      'LawnGreen',
-      'Chartreuse',
-      'GreenYellow',
-      'SpringGreen',
-      'MediumSpringGreen',
-      'LightGreen',
-      'PaleGreen',
-      'DarkSeaGreen',
-      'MediumAquamarine',
-      'MediumSeaGreen',
-      'SeaGreen',
-      'ForestGreen',
-      'Green',
-      'DarkGreen',
-      'Aqua',
-      'Cyan',
-      'LightCyan',
-      'PaleTurquoise',
-      'Aquamarine',
-      'Turquoise',
-      'MediumTurquoise',
-      'DarkTurquoise',
-      'LightSeaGreen',
-      'CadetBlue',
-      'DarkCyan',
-      'Teal',
-      'LightSteelBlue',
-      'PowderBlue',
-      'LightBlue',
-      'SkyBlue',
-      'LightSkyBlue',
-      'DeepSkyBlue',
-      'DodgerBlue',
-      'CornflowerBlue',
-      'SteelBlue',
-      'RoyalBlue',
-      'Blue',
-      'MediumBlue',
-      'DarkBlue',
-      'Navy',
-      'MidnightBlue'
-    ]
-
-    return colorPool[Math.round(Math.random() * colorPool.length - 1)]
+    return '#' + (Math.random() * 0xFFFFFF << 0).toString(16)
   }
 
   const render = () => {
