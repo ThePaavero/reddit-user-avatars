@@ -39,10 +39,14 @@ const RedditUserAvatars = () => {
     avatar.style.padding = '3px'
     avatar.style.margin = '0 10px'
     avatar.style.color = 'white'
-    avatar.style.fontSize = '30px'
-    avatar.style.lineHeight = '35px'
+    avatar.style.fontSize = '18px'
+    avatar.style.lineHeight = '22px'
+    avatar.style.minWidth = '22px'
+    avatar.style.textAlign = 'center'
     avatar.style.fontStyle = 'normal'
     avatar.style.textShadow = '1px 1px 0 rgba(0, 0, 0, 0.3)'
+    avatar.style.boxShadow = '1px 1px 1px rgba(0, 0, 0, 0.2)'
+    avatar.style.borderRadius = '4px'
     return avatar
   }
 
