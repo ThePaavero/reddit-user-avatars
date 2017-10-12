@@ -36,34 +36,9 @@ const RedditUserAvatars = () => {
           const clonedAvatar = avatar.cloneNode(true)
           el.style.position = 'relative'
           el.parentNode.insertBefore(clonedAvatar, el)
-          clonedAvatar.addEventListener('click', e => {
-            console.log(username)
-            showUsersAllComments(username)
-          })
         }
       })
     }
-  }
-
-  const showUsersAllComments = (username) => {
-    const comments = getUsersAllComments(username)
-    const listMarkup = comments.map(c => {
-      return `<li>${ c }</li>`
-    }).join('')
-    document.body.innerHTML += `
-      <ul class='RUA-user-comment-list'>
-        ${ listMarkup }
-      </ul>
-    `
-  }
-
-  const getUsersAllComments = (username) => {
-    const elements = elementPool.filter(el => {
-      return el.innerText.trim() === username
-    })
-    return elements.map(el => {
-      return el.parentNode.parentNode.querySelector('.usertext-body .md').innerText
-    })
   }
 
   const getAvatarElement = (username, color) => {
