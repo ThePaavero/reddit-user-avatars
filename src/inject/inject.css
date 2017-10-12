@@ -16,6 +16,17 @@
     cursor: default;
 }
 
+.RUA-avatar:after {
+    content: " ";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 3px;
+    height: 2px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
 .RUA-user-comment-list {
     position: absolute;
     top: 0;
