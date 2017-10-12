@@ -56,6 +56,7 @@ const RedditUserAvatars = () => {
       textShadow: '1px 1px 0 rgba(0, 0, 0, 0.3)',
       boxShadow: '1px 1px 1px rgba(0, 0, 0, 0.2)',
       borderRadius: '4px',
+      borderBottom: 'solid 1px rgba(0, 0, 0, 0.3)',
     }
     const avatar = document.createElement('i')
     avatar.innerText = username.substring(0, 2)
