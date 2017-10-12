@@ -33,11 +33,19 @@ const RedditUserAvatars = () => {
       const avatar = getAvatarElement(username, color)
       elementPool.forEach(el => {
         if (el.innerText.trim() === username) {
+          const clonedAvatar = avatar.cloneNode(true)
+          clonedAvatar.addEventListener('click', e => {
+            showUsersAllComments(username)
+          })
           el.style.position = 'relative'
-          el.parentNode.insertBefore(avatar.cloneNode(true), el)
+          el.parentNode.insertBefore(clonedAvatar, el)
         }
       })
     }
+  }
+
+  const showUsersAllComments = (username) => {
+    console.log(username)
   }
 
   const getAvatarElement = (username, color) => {
