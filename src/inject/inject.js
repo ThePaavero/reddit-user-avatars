@@ -45,7 +45,17 @@ const RedditUserAvatars = () => {
   }
 
   const showUsersAllComments = (username) => {
-    console.log(username)
+    const comments = getUsersAllComments(username)
+    console.log(comments)
+  }
+
+  const getUsersAllComments = (username) => {
+    const elements = elementPool.filter(el => {
+      return el.innerText.trim() === username
+    })
+    return elements.map(el => {
+      return el.parentNode.parentNode.querySelector('.usertext-body .md').innerText
+    })
   }
 
   const getAvatarElement = (username, color) => {
@@ -65,6 +75,7 @@ const RedditUserAvatars = () => {
       boxShadow: '1px 1px 1px rgba(0, 0, 0, 0.2)',
       borderRadius: '4px',
       borderBottom: 'solid 1px rgba(0, 0, 0, 0.3)',
+      cursor: 'pointer',
     }
     const avatar = document.createElement('i')
     avatar.innerText = username.substring(0, 2)
