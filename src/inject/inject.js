@@ -34,11 +34,12 @@ const RedditUserAvatars = () => {
       elementPool.forEach(el => {
         if (el.innerText.trim() === username) {
           const clonedAvatar = avatar.cloneNode(true)
-          clonedAvatar.addEventListener('click', e => {
-            showUsersAllComments(username)
-          })
           el.style.position = 'relative'
           el.parentNode.insertBefore(clonedAvatar, el)
+          clonedAvatar.addEventListener('click', e => {
+            console.log(username)
+            showUsersAllComments(username)
+          })
         }
       })
     }
@@ -46,7 +47,14 @@ const RedditUserAvatars = () => {
 
   const showUsersAllComments = (username) => {
     const comments = getUsersAllComments(username)
-    console.log(comments)
+    const listMarkup = comments.map(c => {
+      return `<li>${ c }</li>`
+    }).join('')
+    document.body.innerHTML += `
+      <ul class='RUA-user-comment-list'>
+        ${ listMarkup }
+      </ul>
+    `
   }
 
   const getUsersAllComments = (username) => {
@@ -59,29 +67,10 @@ const RedditUserAvatars = () => {
   }
 
   const getAvatarElement = (username, color) => {
-    const styles = {
-      backgroundColor: color,
-      display: 'inline-block',
-      position: 'relative',
-      padding: '3px',
-      margin: '0 10px',
-      color: 'white',
-      fontSize: '18px',
-      lineHeight: '22px',
-      minWidth: '22px',
-      textAlign: 'center',
-      fontStyle: 'normal',
-      textShadow: '1px 1px 0 rgba(0, 0, 0, 0.3)',
-      boxShadow: '1px 1px 1px rgba(0, 0, 0, 0.2)',
-      borderRadius: '4px',
-      borderBottom: 'solid 1px rgba(0, 0, 0, 0.3)',
-      cursor: 'pointer',
-    }
     const avatar = document.createElement('i')
     avatar.innerText = username.substring(0, 2)
-    for (let i in styles) {
-      avatar.style[i] = styles[i]
-    }
+    avatar.className = 'RUA-avatar'
+    avatar.style.backgroundColor = color
     return avatar
   }
 
