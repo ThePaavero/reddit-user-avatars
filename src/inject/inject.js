@@ -41,22 +41,27 @@ const RedditUserAvatars = () => {
   }
 
   const getAvatarElement = (username, color) => {
+    const styles = {
+      backgroundColor: color,
+      display: 'inline-block',
+      position: 'relative',
+      padding: '3px',
+      margin: '0 10px',
+      color: 'white',
+      fontSize: '18px',
+      lineHeight: '22px',
+      minWidth: '22px',
+      textAlign: 'center',
+      fontStyle: 'normal',
+      textShadow: '1px 1px 0 rgba(0, 0, 0, 0.3)',
+      boxShadow: '1px 1px 1px rgba(0, 0, 0, 0.2)',
+      borderRadius: '4px',
+    }
     const avatar = document.createElement('i')
     avatar.innerText = username.substring(0, 2)
-    avatar.style.backgroundColor = color
-    avatar.style.display = 'inline-block'
-    avatar.style.position = 'relative'
-    avatar.style.padding = '3px'
-    avatar.style.margin = '0 10px'
-    avatar.style.color = 'white'
-    avatar.style.fontSize = '18px'
-    avatar.style.lineHeight = '22px'
-    avatar.style.minWidth = '22px'
-    avatar.style.textAlign = 'center'
-    avatar.style.fontStyle = 'normal'
-    avatar.style.textShadow = '1px 1px 0 rgba(0, 0, 0, 0.3)'
-    avatar.style.boxShadow = '1px 1px 1px rgba(0, 0, 0, 0.2)'
-    avatar.style.borderRadius = '4px'
+    for (let i in styles) {
+      avatar.style[i] = styles[i]
+    }
     return avatar
   }
 
