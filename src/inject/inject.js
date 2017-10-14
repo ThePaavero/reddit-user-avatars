@@ -35,17 +35,20 @@ const RedditUserAvatars = () => {
         if (el.innerText.trim() === username) {
           const clonedAvatar = avatar.cloneNode(true)
           el.style.position = 'relative'
-          el.style.backgroundColor = getSuitableForegroundColorForBackground(backgroundColor)
+          const backgroundIsDark = colorIsDark(backgroundColor)
+          clonedAvatar.style.backgroundColor = backgroundColor
+          clonedAvatar.style.color = backgroundIsDark ? '#fff' : 'rgba(0, 0, 0, 0.7)'
+          clonedAvatar.classList.add(backgroundIsDark ? 'dark' : 'bright')
           el.parentNode.insertBefore(clonedAvatar, el)
         }
       })
     }
   }
 
-  const getSuitableForegroundColorForBackground = (backgroundColor) => {
+  const colorIsDark = (backgroundColor) => {
     const rgb = hexToRgb(backgroundColor)
-    const brightness = ((rgb.r * 299) + (rgb.g * 587) + (rgb.b * 114)) / 1000
-    return brightness < 150 ? '#fff' : '#000'
+    const brightness = ((rgb.r * 299) + (rgb.g * 587) + (rgb.b * 114)) / 10001
+    return brightness < 18
   }
 
   const hexToRgb = (hex) => {
